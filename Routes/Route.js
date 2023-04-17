@@ -10,6 +10,7 @@ import {
   addParticipant,
   deleteParticipant,
   editParticipant,
+  get_participant,
 } from "../Controller/Participant.js";
 
 const router = express.Router();
@@ -21,6 +22,7 @@ router.post("/participant", addParticipant);
 // Get API
 router.get("/Tournaments", getTournament);
 router.get("/Tournament/:id", viewTournament);
+router.get("/getParticipant/:id/:ID", get_participant);
 
 // Edit/Update API
 router.put("/update_Tournament", editTournament);

@@ -18,9 +18,9 @@ export const addTournament = async (request, response) => {
 
     return response
       .status(201)
-      .json({ newTournament, message: "Tournament Created Successfully" });
+      .json({ newTournament, message: "Tournament Added Successfully" });
   } catch (error) {
-    return response.status(500).json({ error: error.message });
+    return response.status(500).json(error.message);
   }
 };
 
@@ -36,7 +36,7 @@ export const getTournament = async (request, response) => {
 
 // Edit Tournament
 export const editTournament = async (request, response) => {
-  const { name, startDate, endDate, status, _id } = request.body;
+  const { name, startDate, endDate,  _id } = request.body;
   try {
     const findTournament = await Tournament.findByIdAndUpdate(
       { _id: _id },
@@ -45,7 +45,6 @@ export const editTournament = async (request, response) => {
           name,
           startDate,
           endDate,
-          status,
         },
       },
       {

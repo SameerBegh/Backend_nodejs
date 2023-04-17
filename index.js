@@ -11,7 +11,8 @@ const user = process.env.DB_PASSWORD;
 const password = process.env.DB_PASSWORD;
 
 // MongoDb 
-const URL = `mongodb+srv://${user}:${password}@tournament.k1g1ek9.mongodb.net/?retryWrites=true&w=majority`;
+// const URL = `mongodb+srv://${user}:${password}@tournament.k1g1ek9.mongodb.net/?retryWrites=true&w=majority`;
+const URL = `mongodb+srv://Sameer:Tournament@tournament.k1g1ek9.mongodb.net/?retryWrites=true&w=majority`;
 
 const app = express();
 

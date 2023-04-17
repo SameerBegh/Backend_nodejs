@@ -35,6 +35,21 @@ export const addParticipant = async (request, response) => {
   }
 };
 
+// get Participant
+export const get_participant = async (request, response) => {
+  const _id = request.params.id;
+  const ID = request.params.ID;
+  try {
+    const Participant = await Tournament.findById(
+      { _id: _id },
+      { participants: { $elemMatch: { _id: ID } } }
+    );
+    return response.status(200).json(Participant);
+  } catch (error) {
+    return response.status(500).json({ error: error.message });
+  }
+};
+
 // Edit participant
 export const editParticipant = async (request, response) => {
   const { _id, name, email, mobile, id } = request.body;
@@ -56,7 +71,7 @@ export const editParticipant = async (request, response) => {
       .status(200)
       .json({ findTournament, message: "Update Successfully" });
   } catch (error) {
-    return response.status(500).json(error);
+    return response.status(500).json({ error: error.message });
   }
 };
 
@@ -78,6 +93,6 @@ export const deleteParticipant = async (request, response) => {
       message: "Participant Deleted Successfully",
     });
   } catch (error) {
-    return response.status(500).json(error.message);
+    return response.status(500).json({ error: error.message });
   }
 };
